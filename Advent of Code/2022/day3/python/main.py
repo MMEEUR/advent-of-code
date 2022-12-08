@@ -1,6 +1,6 @@
 input = open("puzzle_input.txt", "r")
 
-rucksacks = input.read().split("\n")
+rucksacks = input.read().splitlines()
 rucksacks2 = [rucksacks[i:i+3] for i in range(0, len(rucksacks), 3)]
 
 def puzzleSolver():

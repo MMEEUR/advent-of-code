@@ -70,6 +70,7 @@ for a in range(len(input)):
         
             H = R[c]
             T = R[c + 1]
+            
             difference = [H[0] - T[0], H[1] - T[1]]
         
             if abs(difference[0]) > 1 or abs(difference[1]) > 1:

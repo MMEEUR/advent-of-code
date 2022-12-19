@@ -1,5 +1,4 @@
 input = open("puzzle_input.txt", "r")
-
 total_elves_calories = input.read()
 total_elves_calories = total_elves_calories.replace("\n", " ").replace("\n\n", "  ")
 

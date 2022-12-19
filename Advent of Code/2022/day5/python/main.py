@@ -1,6 +1,7 @@
 input = open("puzzle_input.txt","r")
 
 instructions = input.read().splitlines()
+
 stacks = [
     [],
     list("CZNBMWQV"),

@@ -1,11 +1,8 @@
-input = open("puzzle_input.txt", "r")
-
-elves_groups = input.read().splitlines()
-total_groups = len(elves_groups)
+elves_groups = open("puzzle_input.txt").read().splitlines()
 futilities = 0
 overlaps = 0
 
-for i in range(total_groups):
+for i in range(len(elves_groups)):
     current_group = elves_groups[i].split(",")
     elf1 = [eval(i) for i in (current_group[0].split("-"))]
     elf2 = [eval(i) for i in (current_group[1].split("-"))]

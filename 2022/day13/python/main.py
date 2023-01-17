@@ -1,4 +1,5 @@
 distress = list(map(str.splitlines, open('puzzle_input.txt').read().strip().split("\n\n")))
+packets = list(map(eval, open('puzzle_input.txt').read().split()))
 
 def compare(x, y):
     
@@ -26,10 +27,6 @@ for (a, b) in distress:
         Sum += i
     i += 1
 
-print(Sum)
-
-packets = list(map(eval, open('puzzle_input.txt').read().split()))
-
 key1 = 1
 key2 = 2
 
@@ -39,5 +36,6 @@ for a in packets:
         key2 += 1
     elif compare(a, [[6]]) < 0:
         key2 += 1
-
+        
+print(Sum)
 print(key1 * key2)

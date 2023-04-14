@@ -1,7 +1,7 @@
 with open("puzzle_input.txt") as f:
     inputs = f.read().splitlines()
     
-def solver(part: bool, a: str, b: str = None, c: str = None):
+def solver(part: bool, a: str, b: str = None, c: str = None) -> int:
     
     if part:
         

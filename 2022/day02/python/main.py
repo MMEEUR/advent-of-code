@@ -1,56 +1,20 @@
-input = open("puzzle_input.txt").read().splitlines()
+with open("puzzle_input.txt") as f:
 
-def puzzleSolver1():
-    total_score = 0
+    inputs = f.read().splitlines()
     
-    for i in range(len(input)):
-        current_round = input[i].split(" ")
-        
-        if current_round[0] == 'A' and current_round[1] == 'X': total_score += 4
-            
-        if current_round[0] == 'A' and current_round[1] == 'Y': total_score += 8
-            
-        if current_round[0] == 'A' and current_round[1] == 'Z': total_score += 3
-                
-        if current_round[0] == 'B' and current_round[1] == 'X': total_score += 1
-                
-        if current_round[0] == 'B' and current_round[1] == 'Y': total_score += 5
-                
-        if current_round[0] == 'B' and current_round[1] == 'Z': total_score += 9
-            
-        if current_round[0] == 'C' and current_round[1] == 'X': total_score += 7
-                
-        if current_round[0] == 'C' and current_round[1] == 'Y': total_score += 2
-                
-        if current_round[0] == 'C' and current_round[1] == 'Z': total_score += 6
-           
-    print("Puzzle Part 1 ----------- Total game score:\t",total_score)
+inputs = [line.strip().split() for line in inputs]
+inputs = [(ord(a) - 64, ord(b) - 87) for a, b in inputs]
     
-def puzzleSolver2():
-    total_score = 0
+def solver(a: int, b: int, part: bool) -> int:
     
-    for i in range(len(input)):
-        current_round = input[i].split(" ")
-        
-        if current_round[0] == 'A' and current_round[1] == 'X': total_score += 3
-            
-        if current_round[0] == 'A' and current_round[1] == 'Y': total_score += 4
-            
-        if current_round[0] == 'A' and current_round[1] == 'Z': total_score += 8
-                
-        if current_round[0] == 'B' and current_round[1] == 'X': total_score += 1
-                
-        if current_round[0] == 'B' and current_round[1] == 'Y': total_score += 5
-                
-        if current_round[0] == 'B' and current_round[1] == 'Z': total_score += 9
-            
-        if current_round[0] == 'C' and current_round[1] == 'X': total_score += 2
-                
-        if current_round[0] == 'C' and current_round[1] == 'Y': total_score += 6
-                
-        if current_round[0] == 'C' and current_round[1] == 'Z': total_score += 7
-           
-    print("Puzzle Part 2 ----------- Total game score:\t",total_score)
+    if part:  
+        return b + 3 if a == b else b + 6 if (b - a) % 3 == 1 else b
     
-puzzleSolver1()
-puzzleSolver2()
+    else:
+        return (a - 2) % 3 + 1 if b == 1 else a + 3 if b == 2 else a % 3 + 7
+    
+part1: int = sum(solver(a, b, True) for a, b in inputs)
+part2: int = sum(solver(a, b, False) for a, b in inputs)
+    
+print(part1)
+print(part2)

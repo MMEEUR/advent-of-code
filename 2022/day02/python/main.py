@@ -12,9 +12,6 @@ def solver(a: int, b: int, part: bool) -> int:
     
     else:
         return (a - 2) % 3 + 1 if b == 1 else a + 3 if b == 2 else a % 3 + 7
-    
-part1: int = sum(solver(a, b, True) for a, b in inputs)
-part2: int = sum(solver(a, b, False) for a, b in inputs)
-    
-print(part1)
-print(part2)
+  
+print(sum(solver(a, b, True) for a, b in inputs))
+print(sum(solver(a, b, False) for a, b in inputs))

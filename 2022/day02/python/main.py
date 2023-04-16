@@ -1,9 +1,8 @@
+from typing import List, Tuple
+
 with open("puzzle_input.txt") as f:
 
-    inputs = f.read().splitlines()
-    
-inputs = [line.strip().split() for line in inputs]
-inputs = [(ord(a) - 64, ord(b) - 87) for a, b in inputs]
+    inputs: List[Tuple[int, int]] = [tuple((ord(line.split()[0]) - 64, ord(line.split()[1]) - 87)) for line in f.read().splitlines()]
     
 def solver(a: int, b: int, part: bool) -> int:
     

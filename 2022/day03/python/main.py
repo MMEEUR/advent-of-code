@@ -1,5 +1,8 @@
+from typing import List
+
 with open("puzzle_input.txt") as f:
-    inputs = f.read().splitlines()
+    
+    inputs: List[str] = f.read().splitlines()
     
 def solver(part: bool, a: str, b: str = None, c: str = None) -> int:
     

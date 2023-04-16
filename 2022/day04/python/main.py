@@ -1,17 +1,20 @@
-elves_groups = open("puzzle_input.txt").read().splitlines()
-futilities = 0
-overlaps = 0
+import re
+from typing import List
 
-for i in range(len(elves_groups)):
-    current_group = elves_groups[i].split(",")
-    elf1 = [eval(i) for i in (current_group[0].split("-"))]
-    elf2 = [eval(i) for i in (current_group[1].split("-"))]
+with open("puzzle_input.txt") as f:
     
-    if elf1[0] <= elf2[0] and elf1[1] >= elf2[1] or elf2[0] <= elf1[0] and elf2[1] >= elf1[1]:
+    inputs: List[List[int]] = [map(int, re.findall('\d+', x,)) for x in f.read().splitlines()]
+    
+futilities: int = 0
+overlaps: int = 0
+
+for a, b, c, d in inputs:
+    
+    if a <= c and b >= d or c <= a and d >= b:
         futilities += 1
         
-    if set(range(elf1[0], elf1[1]+1)) & set(range(elf2[0], elf2[1]+1)):
+    if set(range(a, b+1)) & set(range(c, d+1)):
         overlaps += 1
-        
-print("futilities:\t",futilities)
-print("overlaps:\t",overlaps)
+      
+print(futilities)
+print(overlaps)
